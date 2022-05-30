@@ -31,4 +31,5 @@ public class TeleporterScript : MonoBehaviour
             }
         }
     }
+
 }

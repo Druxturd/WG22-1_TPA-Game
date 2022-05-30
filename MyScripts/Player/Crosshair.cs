@@ -9,6 +9,10 @@ public class Crosshair : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera AimCamera;
     [SerializeField] private LayerMask aimColliderLayerMask = new LayerMask();
     [SerializeField] private Transform debugTransform;
+    [SerializeField] private GameObject pistolTxt;
+    [SerializeField] private GameObject rifleTxt;
+    [SerializeField] private GameObject interactTxt;
+    //[SerializeField] TeleporterScript teleporterScript;
 
     // Start is called before the first frame update
     void Start()
@@ -27,6 +31,8 @@ public class Crosshair : MonoBehaviour
             debugTransform.position = raycastHit.point;
             if (raycastHit.transform.CompareTag("Pistol"))
             {
+                pistolTxt.SetActive(true);
+                //rifleTxt.SetActive(false);
                 //Debug.Log("Pistol");
                 if (Input.GetKeyDown(KeyCode.F))
                 {
@@ -35,11 +41,26 @@ public class Crosshair : MonoBehaviour
             }
             else if (raycastHit.transform.CompareTag("Rifle"))
             {
+                //pistolTxt.SetActive(false);
+                rifleTxt.SetActive(true);
                 //Debug.Log("Rifle");
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     print("Take Rifle");
                 }
+            }
+            else if (raycastHit.transform.CompareTag("NPC"))
+            {
+                interactTxt.SetActive(true);
+            }
+            else if (raycastHit.transform.CompareTag("Teleporter"))
+            {
+            }
+            else
+            {
+                pistolTxt.SetActive(false);
+                rifleTxt.SetActive(false);
+                interactTxt.SetActive(false);
             }
         }
 

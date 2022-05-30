@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
         if (isGrounded && ySpeed <= 0f)
         {
-            ySpeed = -0.5f;
+            ySpeed = -1f;
             if (spaceKeyPressed)
             {
                 ySpeed = jumpForce;
