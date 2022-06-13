@@ -51,7 +51,7 @@ public class Enemy : MonoBehaviour
             if (ammoDropChance == 1 && checkAmmoDropped == false)
             {
                 Vector3 position = transform.position;
-                position.y = Terrain.activeTerrain.SampleHeight(transform.position) + 0.1f;
+                position.y = 4;
                 if (ammoTypeChance == 0)
                 {
                     Instantiate(rifleAmmo, position, Quaternion.identity);
@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
                 else if (ammoTypeChance == 1)
                 {
 
-                    Instantiate(pistolAmmo, position, Quaternion.Euler(new Vector3(0, 0, -180)));
+                    Instantiate(pistolAmmo, position, Quaternion.identity);
                 }
                 checkAmmoDropped = true;
                 Debug.Log("drop");
@@ -75,7 +75,7 @@ public class Enemy : MonoBehaviour
             }
 
         }
-        else if (distance <= 25f)
+        else if (distance <= 20f)
         {
             lookPlayer();
         }

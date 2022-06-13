@@ -96,15 +96,24 @@ public class Crosshair : MonoBehaviour
             Debug.Log(hit.transform.name);
 
             Enemy target = hit.transform.GetComponent<Enemy>();
+            Boss bossTarget = hit.transform.GetComponent<Boss>();
             //if(target != null)
             //{
             //    target.TakeDmg(10);
             //}
 
-            if (hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Enemy2") || hit.transform.CompareTag("Boss")){
+            if (hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Enemy2")){
                 if (TakeWeapon.isActivePistol() && AmmoCount.currPistolAmmo > 0)
                 {
                     target.TakeDmg(70);
+                }
+            }
+            else if (hit.transform.CompareTag("Boss"))
+            {
+                if (TakeWeapon.isActivePistol() && AmmoCount.currPistolAmmo > 0)
+                {
+                    bossTarget.bossHealth -= 70;
+                    bossTarget.TakeDamage(70);
                 }
             }
           
@@ -118,16 +127,25 @@ public class Crosshair : MonoBehaviour
             Debug.Log(hit.transform.name);
 
             Enemy target = hit.transform.GetComponent<Enemy>();
+            Boss bossTarget = hit.transform.GetComponent<Boss>();
             //if(target != null)
             //{
             //    target.TakeDmg(10);
             //}
 
-            if (hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Enemy2") || hit.transform.CompareTag("Boss"))
+            if (hit.transform.CompareTag("Enemy") || hit.transform.CompareTag("Enemy2"))
             {
                 if (TakeWeapon.isActiveRifle() && AmmoCount.currRifleAmmo > 0)
                 {
                     target.TakeDmg(35);
+                }
+            }
+            else if (hit.transform.CompareTag("Boss"))
+            {
+                if (TakeWeapon.isActiveRifle() && AmmoCount.currRifleAmmo > 0)
+                {
+                    bossTarget.bossHealth -= 35;
+                    bossTarget.TakeDamage(35);
                 }
             }
 

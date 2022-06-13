@@ -6,8 +6,8 @@ using UnityEngine.UI;
 public class Boss : MonoBehaviour
 {
 
-    public int maxHealth = 2000;
-    public int currHealth;
+    public int bossHealth = 2000;
+    //public int currHealth;
 
     [SerializeField] public CanvasGroup victoryUIGroup;
     [SerializeField] public GameObject victoryUI;
@@ -24,8 +24,9 @@ public class Boss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currHealth = maxHealth;
-        healthBar.SetMaxHealth(maxHealth);
+        //currHealth = maxHealth;
+        bossHealth = 2000;
+        healthBar.SetMaxHealth(bossHealth);
         fireRate = 14;
         damage = 1;
     }
@@ -35,7 +36,7 @@ public class Boss : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.M))
         {
-            TakeDmg(20);
+            TakeDamage(20);
         }
         if (slider.value <= 0)
         {
@@ -48,11 +49,11 @@ public class Boss : MonoBehaviour
         }
     }
 
-    void TakeDmg(int dmg)
+    public void TakeDamage(int dmg)
     {
-        currHealth -= dmg;
+        //bossHealth -= dmg;
 
-        healthBar.SetHealth(currHealth);
+        healthBar.SetHealth(bossHealth);
     }
 
     void Victory()
